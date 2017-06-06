@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:padding="20dp"
-        android:src="@drawable/bug" />
+        android:src="@drawable/icon" />
 
     <Button
         android:id="@+id/startButton"
