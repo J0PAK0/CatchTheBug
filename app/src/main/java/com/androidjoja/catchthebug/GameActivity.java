@@ -6,6 +6,8 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import java.util.Random;
+
 public class GameActivity extends Activity {
 
     private boolean gameIsRunning;
@@ -15,6 +17,7 @@ public class GameActivity extends Activity {
     private int caughtBugs;
     private int time;
     private float scale;
+    private Random randomGenerator = new Random();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -61,6 +64,26 @@ public class GameActivity extends Activity {
 
         ViewGroup.LayoutParams lpTime = flTime.getLayoutParams();
         lpTime.width = Math.round(scale * time * 300  / 60);
+
+    }
+
+    private void countdown() {
+        time = time - 1;
+        float randomDigit = randomGenerator.nextFloat();
+        double probability = bugs * 1.5;
+        if(probability > 1) {
+            showBug();
+            if(randomDigit < probability - 1) {
+                showBug();
+            }
+        } else {
+            if(randomDigit < probability) {
+                showBug();
+            }
+        }
+    }
+
+    private void showBug() {
 
     }
 }
